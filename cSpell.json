@@ -22,5 +22,5 @@
   ],
   "language": "en-US",
   "version": "0.0.0",
-  "words": ["codeowners", "dependabot", "editorconfig", "grpc", "protos"]
+  "words": ["codeowners", "editorconfig", "grpc", "protos"]
 }

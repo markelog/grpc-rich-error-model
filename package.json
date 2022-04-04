@@ -1,4 +1,6 @@
 {
+  "name": "grpc-rich-error-model",
+  "description": "GRPC Rich Error Model",
   "repository": "markelog/gprc-rich-error-model",
   "type": "module",
   "version": "0.0.1",
@@ -22,7 +24,6 @@
     "proto3-json-serializer": "^0.1.8",
     "ramda": "^0.28.0"
   },
-  "description": "GRPC Rich Error Model",
   "devDependencies": {
     "@babel/core": "^7.17.7",
     "@babel/preset-env": "^7.16.11",
@@ -63,7 +64,6 @@
   ],
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
-  "name": "grpc-rich-error-model",
   "scripts": {
     "build": "npm run build:protos && npm run build:cjs && npm run build:esm",
     "build:protos": "./scripts/build.sh",
