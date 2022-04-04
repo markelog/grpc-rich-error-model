@@ -1,0 +1,26 @@
+{
+  "dictionaries": [
+    "companies",
+    "filetypes",
+    "misc",
+    "node",
+    "npm",
+    "softwareTerms",
+    "typescript"
+  ],
+  "flagWords": [],
+  "ignorePaths": [
+    ".eslintrc",
+    "*.json",
+    "*.log",
+    "*.tgz",
+    "*.yaml",
+    "CHANGELOG.md",
+    "coverage/**",
+    "lib/**",
+    "node_modules/**"
+  ],
+  "language": "en-US",
+  "version": "0.0.0",
+  "words": ["codeowners", "dependabot", "editorconfig", "grpc", "protos"]
+}

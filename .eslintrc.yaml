@@ -1,0 +1,24 @@
+env:
+  es6: true
+  node: true
+extends: '@ridedott/eslint-config'
+overrides:
+  - env:
+      jest: true
+    files:
+      - ./src/**/*.spec.ts
+    rules:
+      '@ridedott/no-single-line-comment-block': 'off'
+      '@typescript-eslint/no-magic-numbers': 'off'
+      'max-lines-per-function': 'off'
+      'spaced-comment': 'off'
+  - files:
+      - ./__mocks__/**/*.ts
+    rules:
+      'unicorn/filename-case': 'off'
+parserOptions:
+  ecmaVersion: 2020
+  project: tsconfig.json
+  sourceType: module
+rules:
+  'no-console': 'off'

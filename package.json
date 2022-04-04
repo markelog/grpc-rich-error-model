@@ -1,0 +1,85 @@
+{
+  "repository": "markelog/gprc-rich-error-model",
+  "type": "module",
+  "version": "0.0.1",
+  "author": {
+    "name": "Oleg Gaydarenko",
+    "email": "markelog@gmail.com"
+  },
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.5.9",
+    "@grpc/proto-loader": "^0.6.9",
+    "@ridedott/run": "^2.4.41",
+    "gcp-metadata": "^4.3.1",
+    "google-proto-files": "^2.5.0",
+    "joi": "^17.6.0",
+    "proto3-json-serializer": "^0.1.8",
+    "ramda": "^0.28.0"
+  },
+  "description": "GRPC Rich Error Model",
+  "devDependencies": {
+    "@babel/core": "^7.17.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@ridedott/eslint-config": "^2.14.5",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.21",
+    "@types/ramda": "^0.28.1",
+    "babel-jest": "^27.5.1",
+    "commitizen": "^4.2.4",
+    "cspell": "^5.19.2",
+    "eslint": "^7.32.0",
+    "http-status-codes": "^2.2.0",
+    "jest": "^27.5.1",
+    "nock": "^13.2.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.6.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.6.2"
+  },
+  "engines": {
+    "node": ">=12.20"
+  },
+  "exports": {
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    }
+  },
+  "files": [
+    "lib",
+    "package.json",
+    "readme.md",
+    "src",
+    "!src/**/*.spec.ts"
+  ],
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "name": "grpc-rich-error-model",
+  "scripts": {
+    "build": "npm run build:protos && npm run build:cjs && npm run build:esm",
+    "build:protos": "./scripts/build.sh",
+    "build:cjs": "tsc --module commonjs --outDir ./lib/cjs --project ./tsconfig.production.json && echo '{ \"type\": \"commonjs\" }' > ./lib/cjs/package.json",
+    "build:esm": "tsc --project ./tsconfig.production.json",
+    "clean": "rm -rf ./.cache ./lib",
+    "cz": "git-cz",
+    "cz:retry": "git-cz --retry",
+    "format": "prettier --check '**/*.{json,md,ts,yml,yaml}'",
+    "format:fix": "prettier --write '**/*.{json,md,ts,yml,yaml}'",
+    "lint": "eslint --cache --cache-location './.cache/eslint' './**/*.ts'",
+    "lint:fix": "eslint --cache --cache-location './.cache/eslint' --fix './**/*.ts'",
+    "spellcheck": "cspell '**/*'",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "types": "tsc --noEmit"
+  }
+}

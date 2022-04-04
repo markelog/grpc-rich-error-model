@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package grpc_rich_error_model;
+
+import "google/rpc/error_details.proto";
+import "google/rpc/status.proto";
