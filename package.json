@@ -1,7 +1,7 @@
 {
   "name": "grpc-rich-error-model",
   "description": "GRPC Rich Error Model",
-  "repository": "markelog/gprc-rich-error-model",
+  "repository": "markelog/grpc-rich-error-model",
   "type": "module",
   "version": "0.0.1",
   "author": {
