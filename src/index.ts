@@ -10,7 +10,7 @@ import type { PreconditionFailure__Output } from './protos/google/rpc/Preconditi
 import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
 import { assertNever } from './assertions';
-import jsonDescriptor from './protos/bundle.json';
+import jsonDescriptor from './protos/bundle.json' assert { type: 'json' };
 
 const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
 export const StatusMessageType = root.lookupType('google.rpc.Status');
