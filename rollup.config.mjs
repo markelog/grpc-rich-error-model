@@ -14,16 +14,12 @@ const configuration = {
   cache: false,
   external: Object.keys(packageJson.dependencies ?? {}),
   input: './src/index.ts',
-  output: {
-    compact: false,
-    file: './lib/index.js',
-  },
   strictDeprecations: true,
   plugins: [
     commonjs(),
     json(),
     nodeResolve({ preferBuiltins: true }),
-    typescript({ tsconfig: 'tsconfig.production.json' }),
+    typescript({ tsconfig: './tsconfig.production.json' }),
   ],
 };
 

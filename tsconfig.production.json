@@ -33,7 +33,7 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "./lib/esm",
+    "outDir": ".",
     "pretty": true,
     "removeComments": false,
     "resolveJsonModule": true,

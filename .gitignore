@@ -17,6 +17,7 @@ coverage
 
 # Caches
 .cache
+.rollup.cache/
 
 # Protos build
 /src/protos
