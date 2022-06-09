@@ -67,6 +67,7 @@ export interface ErrorInfo extends ErrorInfo__Output {
   '@type': ErrorDetailProtobufType.ErrorInfo;
   domain: string;
 }
+export type { status } from "@grpc/grpc-js"
 
 interface StatusToErrorDetailType {
   [status.ABORTED]: ErrorInfo;
