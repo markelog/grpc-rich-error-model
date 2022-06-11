@@ -2,6 +2,9 @@ import { Metadata, status, StatusObject } from '@grpc/grpc-js';
 import { grpc } from '@ridedott/run';
 import * as serializer from 'proto3-json-serializer';
 import { default as protobuf, INamespace } from 'protobufjs';
+import {fileURLToPath} from 'url';
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
 
 import type { BadRequest__Output } from './protos/google/rpc/BadRequest';
 import type { DebugInfo__Output } from './protos/google/rpc/DebugInfo';
@@ -10,6 +13,16 @@ import type { PreconditionFailure__Output } from './protos/google/rpc/Preconditi
 import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
 import { assertNever } from './assertions';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const jsonDescriptor = JSON.parse(
+  readFileSync(join(__dirname, './protos/bundle.json'), 'utf8')
+);
+
+const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
+export const StatusMessageType = root.lookupType('google.rpc.Status');
 
 export enum ErrorDetailProtobufType {
   BadRequest = 'type.googleapis.com/google.rpc.BadRequest',
@@ -40,11 +53,6 @@ const mapGrpcErrorToErrorDetailProtobufType = {
   [status.UNIMPLEMENTED]: ErrorDetailProtobufType.Null,
   [status.UNKNOWN]: ErrorDetailProtobufType.DebugInfo,
 };
-
-const jsonDescriptor = require('./protos/bundle.json');
-
-const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
-export const StatusMessageType = root.lookupType('google.rpc.Status');
 
 export interface BadRequest extends BadRequest__Output {
   '@type': ErrorDetailProtobufType.BadRequest;
