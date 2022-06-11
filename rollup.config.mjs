@@ -12,13 +12,13 @@ import packageJson from './package.json';
  */
 const configuration = {
   cache: false,
-  external: Object.keys(packageJson.dependencies ?? {}),
+  treeshake: false,
   input: './src/index.ts',
   strictDeprecations: true,
   plugins: [
-    commonjs(),
+    // commonjs(),
     json(),
-    nodeResolve({ preferBuiltins: true }),
+    // nodeResolve({ preferBuiltins: true }),
     typescript({ tsconfig: './tsconfig.production.json' }),
   ],
 };

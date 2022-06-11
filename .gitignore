@@ -10,14 +10,13 @@ node_modules
 .DS_Store
 
 # Build output
-lib
+dist
 
 # Coverage output
 coverage
 
 # Caches
 .cache
-.rollup.cache/
 
 # Protos build
 /src/protos

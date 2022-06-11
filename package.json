@@ -17,9 +17,6 @@
   "dependencies": {
     "@grpc/grpc-js": "^1.5.9",
     "@ridedott/run": "^2.6.0",
-    "@rollup/plugin-commonjs": "^22.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-typescript": "^8.3.2",
     "google-proto-files": "^2.5.0",
     "proto3-json-serializer": "^0.1.8"
   },
@@ -31,7 +28,6 @@
     "@commitlint/config-conventional": "^16.2.1",
     "@grpc/proto-loader": "^0.6.13",
     "@ridedott/eslint-config": "^2.19.5",
-    "@rollup/plugin-node-resolve": "^13.3.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21",
     "babel-jest": "^27.5.1",
@@ -50,28 +46,19 @@
   "engines": {
     "node": ">=12.20 <18"
   },
-  "exports": {
-    ".": {
-      "import": "./lib/esm/index.js",
-      "require": "./lib/cjs/index.js"
-    }
-  },
   "files": [
-    "lib",
+    "dist",
     "package.json",
     "readme.md",
     "src",
     "!src/**/*.spec.ts"
   ],
-  "main": "./lib/cjs/index.js",
-  "module": "./lib/esm/index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "rollup": "NODE_OPTIONS='--experimental-json-modules' rollup --config ./rollup.config.mjs",
-    "build": "npm run build:protos && npm run build:cjs && npm run build:esm",
+    "build": "npm run clean && npm run build:protos && npm run build:ts",
     "build:protos": "./scripts/build.sh",
-    "build:cjs": "npm run rollup -- --format cjs --file ./lib/cjs/index.js",
-    "build:esm": "npm run rollup -- --format es --file ./lib/esm/index.js",
-    "clean": "rm -rf ./.cache ./lib",
+    "build:ts": "tsc -p tsconfig.production.json",
+    "clean": "rm -rf ./.cache ./dist",
     "cz": "git-cz",
     "cz:retry": "git-cz --retry",
     "format": "prettier --check '**/*.{json,md,ts,yml,yaml}'",

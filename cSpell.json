@@ -17,7 +17,7 @@
     "*.yaml",
     "CHANGELOG.md",
     "coverage/**",
-    "lib/**",
+    "dist/**",
     "node_modules/**"
   ],
   "language": "en-US",
