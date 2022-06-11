@@ -10,10 +10,6 @@ import type { PreconditionFailure__Output } from './protos/google/rpc/Preconditi
 import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
 import { assertNever } from './assertions';
-import jsonDescriptor from './protos/bundle.json';
-
-const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
-export const StatusMessageType = root.lookupType('google.rpc.Status');
 
 export enum ErrorDetailProtobufType {
   BadRequest = 'type.googleapis.com/google.rpc.BadRequest',
@@ -44,6 +40,11 @@ const mapGrpcErrorToErrorDetailProtobufType = {
   [status.UNIMPLEMENTED]: ErrorDetailProtobufType.Null,
   [status.UNKNOWN]: ErrorDetailProtobufType.DebugInfo,
 };
+
+const jsonDescriptor = require('./protos/bundle.json');
+
+const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
+export const StatusMessageType = root.lookupType('google.rpc.Status');
 
 export interface BadRequest extends BadRequest__Output {
   '@type': ErrorDetailProtobufType.BadRequest;
