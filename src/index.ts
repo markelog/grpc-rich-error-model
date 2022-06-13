@@ -10,7 +10,7 @@ import type { PreconditionFailure__Output } from './protos/google/rpc/Preconditi
 import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
 import { assertNever } from './assertions';
-import * as jsonDescriptor from './protos/bundle.json';
+import jsonDescriptor from './protos/bundle.json';
 
 // Seems there is an error with the types but it works when casted.
 const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
