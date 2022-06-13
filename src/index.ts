@@ -13,13 +13,7 @@ import type { PreconditionFailure__Output } from './protos/google/rpc/Preconditi
 import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
 import { assertNever } from './assertions';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const jsonDescriptor = JSON.parse(
-  readFileSync(join(__dirname, './protos/bundle.json'), 'utf8')
-);
+import jsonDescriptor from './protos/bundle.json';
 
 const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
 export const StatusMessageType = root.lookupType('google.rpc.Status');
@@ -168,11 +162,11 @@ const getErrorMetadataForCode = <Status extends status>(
 };
 
 export class GrpcError<Status extends StatusObject['code']> extends grpc.Error {
-  public readonly code: StatusObject['code'];
+  public override readonly code: StatusObject['code'];
 
-  public readonly details: string;
+  public override readonly details: string;
 
-  public readonly metadata: Metadata;
+  public override readonly metadata: Metadata;
 
   public constructor(
     code: Status,
