@@ -2,9 +2,6 @@ import { Metadata, status, StatusObject } from '@grpc/grpc-js';
 import { grpc } from '@ridedott/run';
 import * as serializer from 'proto3-json-serializer';
 import { default as protobuf, INamespace } from 'protobufjs';
-import {fileURLToPath} from 'url';
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
 
 import type { BadRequest__Output } from './protos/google/rpc/BadRequest';
 import type { DebugInfo__Output } from './protos/google/rpc/DebugInfo';
@@ -13,8 +10,9 @@ import type { PreconditionFailure__Output } from './protos/google/rpc/Preconditi
 import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
 import { assertNever } from './assertions';
-import jsonDescriptor from './protos/bundle.json';
+import * as jsonDescriptor from './protos/bundle.json';
 
+// Seems there is an error with the types but it works when casted.
 const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
 export const StatusMessageType = root.lookupType('google.rpc.Status');
 
