@@ -53,18 +53,12 @@
     "src",
     "!src/**/*.spec.ts"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    }
-  },
   "main": "./dist/cjs/index.js",
   "scripts": {
     "build": "npm run clean && npm run build:protos && npm run build:ts",
     "build:protos": "./scripts/build.sh",
     "build:ts": "npm run build:cjs",
-    "build:cjs": "tsc --resolveJsonModule --module commonjs --outDir ./dist/cjs --project ./tsconfig.production.json && echo '{ \"type\": \"commonjs\" }' > ./dist/cjs/package.json",
+    "build:cjs": "tsc --project ./tsconfig.production.json",
     "clean": "rm -rf ./.cache ./dist",
     "cz": "git-cz",
     "cz:retry": "git-cz --retry",
