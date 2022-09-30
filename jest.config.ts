@@ -20,7 +20,6 @@ const configuration: Config.InitialOptions = {
   restoreMocks: true,
   roots: ['<rootDir>/__mocks__', '<rootDir>/src'],
   testEnvironment: 'node',
-  transformIgnorePatterns: ['/node_modules/grpc-rich-error-model'],
 };
 
 export default configuration;

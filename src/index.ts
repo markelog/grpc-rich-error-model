@@ -11,7 +11,11 @@ import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
 import { assertNever } from './assertions';
 
-import jsonDescriptor from './protos/bundle.json';
+const { default: jsonDescriptor } = await import('./protos/bundle.json', {
+  assert: {
+    type: 'json',
+  },
+});
 
 // Seems there is an error with the types but it works when casted.
 const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
