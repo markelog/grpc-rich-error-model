@@ -64,9 +64,8 @@
   "scripts": {
     "build": "npm run clean && npm run build:protos && npm run build:ts",
     "build:protos": "./scripts/build.sh",
-    "build:ts": "npm run build:cjs && npm run build:esm",
+    "build:ts": "npm run build:cjs",
     "build:cjs": "tsc --resolveJsonModule --module commonjs --outDir ./dist/cjs --project ./tsconfig.production.json && echo '{ \"type\": \"commonjs\" }' > ./dist/cjs/package.json",
-    "build:esm": "tsc --resolveJsonModule --project ./tsconfig.production.json",
     "clean": "rm -rf ./.cache ./dist",
     "cz": "git-cz",
     "cz:retry": "git-cz --retry",

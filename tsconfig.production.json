@@ -20,7 +20,7 @@
     "inlineSources": false,
     "isolatedModules": true,
     "lib": ["ES2020"],
-    "module": "ESNext",
+    "module": "esnext",
     "moduleResolution": "node",
     "newLine": "lf",
     "noEmitHelpers": false,
