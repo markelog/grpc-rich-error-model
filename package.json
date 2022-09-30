@@ -60,7 +60,6 @@
     }
   },
   "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
   "scripts": {
     "build": "npm run clean && npm run build:protos && npm run build:ts",
     "build:protos": "./scripts/build.sh",
