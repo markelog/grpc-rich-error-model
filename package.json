@@ -62,11 +62,12 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "scripts": {
-    "build": "npm run clean && npm run build:protos && npm run build:ts",
+    "build": "npm run clean && npm run build:protos && npm run build:ts && npm run build:finish",
     "build:protos": "./scripts/build.sh",
     "build:ts": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc --resolveJsonModule --module commonjs --outDir ./dist/cjs --project ./tsconfig.production.json && echo '{ \"type\": \"commonjs\" }' > ./dist/cjs/package.json",
     "build:esm": "tsc --resolveJsonModule --project ./tsconfig.production.json",
+    "build:finish": "cp ./src/protos/bundle.js ./dist/cjs/protos/bundle.js && cp ./src/protos/bundle.js ./dist/esm/protos/bundle.js",
     "clean": "rm -rf ./.cache ./dist",
     "cz": "git-cz",
     "cz:retry": "git-cz --retry",
