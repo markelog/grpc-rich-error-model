@@ -1,4 +1,3 @@
-import { readFile } from 'fs/promises';
 import { Metadata, status, StatusObject } from '@grpc/grpc-js';
 import { grpc } from '@ridedott/run';
 import * as serializer from 'proto3-json-serializer';
@@ -12,9 +11,7 @@ import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
 import { assertNever } from './assertions';
 
-const jsonDescriptor = JSON.parse(
-  await readFile(new URL('./protos/bundle.json', import.meta.url), 'utf8')
-);
+import jsonDescriptor from './protos/bundle.js';
 
 // Seems there is an error with the types but it works when casted.
 const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);

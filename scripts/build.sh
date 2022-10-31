@@ -14,6 +14,8 @@ npx --no-install pbjs \
   --target json \
   ./protos/root.proto
 
+./scripts/hack.cjs
+
 npx --no-install proto-loader-gen-types \
   --grpcLib @grpc/grpc-js \
   --includeComments \

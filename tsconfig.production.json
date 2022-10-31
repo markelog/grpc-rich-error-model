@@ -26,7 +26,6 @@
     "noEmitHelpers": false,
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noStrictGenericChecks": false,
@@ -40,7 +39,6 @@
     "rootDir": "./src",
     "skipLibCheck": false,
     "sourceMap": true,
-    "strict": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
@@ -49,7 +47,9 @@
     "target": "ES2020",
     "typeRoots": ["./node_modules/@types"],
     "types": ["@types/node"],
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "noImplicitAny": false,
+    "strict": true
   },
   "files": ["./src/index.ts"]
 }
