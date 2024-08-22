@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "noEmitHelpers": false,
+    "outDir": "./lib/cjs",
+    "rootDir": "./src",
+    "target": "ES2020",
+    "esModuleInterop": true
+  },
+  "extends": "./tsconfig.esm.json",
+  "include": ["./src/index.ts"]
+}

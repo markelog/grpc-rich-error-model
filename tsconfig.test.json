@@ -3,6 +3,6 @@
     "rootDir": ".",
     "types": ["@types/jest", "@types/node"]
   },
-  "extends": "./tsconfig.production.json",
+  "extends": "./tsconfig.esm.json",
   "include": ["./__mocks__/**/*.ts", "./src/**/*.spec.ts"]
 }

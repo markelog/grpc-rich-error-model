@@ -1,8 +1,23 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "types": ["@types/jest", "@types/node"]
+    "incremental": true,
+    "ignoreDeprecations": "5.0",
+    "types": ["@types/jest", "@types/node"],
+    "resolveJsonModule": true,
+    "tsBuildInfoFile": "./.cache/typescript"
   },
-  "extends": "./tsconfig.production.json",
-  "include": ["./__mocks__/**/*.ts", "./jest.config.ts", "./src/**/*.ts"]
+  "extends": "./tsconfig.esm.json",
+  "include": [
+    "./__mocks__/**/*.ts",
+    "./jest.config.ts",
+    "./src/**/*.ts",
+    "./test/**/*.ts"
+  ],
+  // https://github.com/facebook/jest/issues/11453
+  "ts-node": {
+    "moduleTypes": {
+      "jest.config.ts": "cjs"
+    }
+  }
 }
