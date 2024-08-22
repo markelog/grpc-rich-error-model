@@ -52,7 +52,7 @@ describe('GrpcError', (): void => {
 
     const grpcError = new GrpcError(status.ABORTED, 'message', errorInfo);
 
-    expect(grpcError).toBeInstanceOf(grpc.Error);
+    expect(grpcError).toBeInstanceOf(grpc.grpcJs.Error);
     expect(grpcError.code).toBe(10);
     expect(grpcError.message).toBe('message');
     expect(grpcError.details).toBe('message');

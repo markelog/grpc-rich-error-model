@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.5.9",
-    "@ridedott/run": "^2.6.0",
+    "@ridedott/run": "^13.1.38",
     "google-proto-files": "^2.5.0",
     "proto3-json-serializer": "^0.1.8"
   },

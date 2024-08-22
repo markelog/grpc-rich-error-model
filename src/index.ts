@@ -160,7 +160,8 @@ const getErrorMetadataForCode = <Status extends status>(
   }
 };
 
-export class GrpcError<Status extends StatusObject['code']> extends grpc.Error {
+export class GrpcError<Status extends StatusObject['code']> extends grpc.grpcJs
+  .Error {
   public override readonly code: StatusObject['code'];
 
   public override readonly details: string;
