@@ -10,7 +10,7 @@ node_modules
 .DS_Store
 
 # Build output
-dist
+lib
 
 # Coverage output
 coverage
