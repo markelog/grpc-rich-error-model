@@ -11,16 +11,21 @@
   "flagWords": [],
   "ignorePaths": [
     ".eslintrc",
+    "*.config.cjs",
+    "*.config.ts",
     "*.json",
     "*.log",
+    "*.proto",
     "*.tgz",
     "*.yaml",
     "CHANGELOG.md",
     "coverage/**",
-    "dist/**",
+    "src/protos/**",
+    "lib/**",
+    "license",
     "node_modules/**"
   ],
   "language": "en-US",
   "version": "0.0.0",
-  "words": ["codeowners", "editorconfig", "grpc", "protos"]
+  "words": ["codeowners", "editorconfig", "grpc", "protos", "protobuf"]
 }
