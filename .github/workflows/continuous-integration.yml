@@ -120,6 +120,8 @@ jobs:
           restore-keys: |
             npm-
       - name: Install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm ci --ignore-scripts --no-audit --no-progress --prefer-offline
       - name: Test
         run: npm run test:coverage
@@ -132,9 +134,6 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 14
-          - 16
-          - 18
           - 20
     timeout-minutes: 5
   types:
