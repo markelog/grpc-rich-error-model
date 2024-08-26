@@ -104,9 +104,9 @@ describe('GrpcError', (): void => {
   );
 
   it.each([
-    [[status.CANCELLED], ErrorDetailProtobufType.Null],
-    [[status.OK], ErrorDetailProtobufType.Null],
-    [[status.UNIMPLEMENTED], ErrorDetailProtobufType.Null],
+    [status.CANCELLED, ErrorDetailProtobufType.Null],
+    [status.OK, ErrorDetailProtobufType.Null],
+    [status.UNIMPLEMENTED, ErrorDetailProtobufType.Null],
   ])(
     'has empty metadata when code is %d',
     (code: status, errorDetailType: ErrorDetailProtobufType): void => {
