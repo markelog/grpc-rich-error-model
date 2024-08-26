@@ -29,6 +29,7 @@
     "@grpc/proto-loader": "^0.6.13",
     "@jest/globals": "^29.7.0",
     "@ridedott/eslint-config": "^2.27.110",
+    "@ridedott/eslint-plugin": "^1.7.204",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21",
     "babel-jest": "^27.5.1",
