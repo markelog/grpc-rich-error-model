@@ -38,7 +38,7 @@ describe('makeMetadataWithEncodedErrorDetails', (): void => {
   });
 });
 
-// eslint-disable-next-line jest/lowercase-name
+// eslint-disable-next-line jest/prefer-lowercase-title
 describe('GrpcError', (): void => {
   it('is instance of grpc.Error and has expected properties', (): void => {
     expect.assertions(5);

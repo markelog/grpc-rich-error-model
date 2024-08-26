@@ -2,15 +2,14 @@ import { Metadata, ServiceError, status, StatusObject } from '@grpc/grpc-js';
 import * as serializer from 'proto3-json-serializer';
 import { default as protobuf, INamespace } from 'protobufjs';
 
+import { assertNever } from './assertions';
+import jsonDescriptor from './protos/bundle.js';
 import type { BadRequest__Output } from './protos/google/rpc/BadRequest';
 import type { DebugInfo__Output } from './protos/google/rpc/DebugInfo';
 import type { ErrorInfo__Output } from './protos/google/rpc/ErrorInfo';
 import type { PreconditionFailure__Output } from './protos/google/rpc/PreconditionFailure';
 import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
-import { assertNever } from './assertions';
-
-import jsonDescriptor from './protos/bundle.js';
 
 // Seems there is an error with the types but it works when casted.
 const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
