@@ -34,7 +34,7 @@ jobs:
           restore-keys: |
             npm-
       - env:
-          NODE_AUTH_TOKEN: ${{ secrets.DOTTBOTT_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         name: Install dependencies
         run: npm ci --ignore-scripts --no-audit --no-progress --prefer-offline
       - name: Format
@@ -62,7 +62,7 @@ jobs:
           restore-keys: |
             npm-
       - env:
-          NODE_AUTH_TOKEN: ${{ secrets.DOTTBOTT_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         name: Install dependencies
         run: npm ci --ignore-scripts --no-audit --no-progress --prefer-offline
       - name: Lint
@@ -90,7 +90,7 @@ jobs:
           restore-keys: |
             npm-
       - env:
-          NODE_AUTH_TOKEN: ${{ secrets.DOTTBOTT_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         name: Install dependencies
         run: npm ci --ignore-scripts --no-audit --no-progress --prefer-offline
       - name: Spellcheck
@@ -120,7 +120,11 @@ jobs:
           restore-keys: |
             npm-
       - name: Install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm ci --ignore-scripts --no-audit --no-progress --prefer-offline
+      - name: Build
+        run: npm run build
       - name: Test
         run: npm run test:coverage
       - name: Upload coverage to Coveralls
@@ -132,9 +136,6 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 14
-          - 16
-          - 18
           - 20
     timeout-minutes: 5
   types:
@@ -159,9 +160,11 @@ jobs:
           restore-keys: |
             npm-
       - env:
-          NODE_AUTH_TOKEN: ${{ secrets.DOTTBOTT_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         name: Install dependencies
         run: npm ci --ignore-scripts --no-audit --no-progress --prefer-offline
+      - name: Build
+        run: npm run build
       - name: Types
         run: npm run types
     timeout-minutes: 5

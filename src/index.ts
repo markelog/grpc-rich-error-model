@@ -1,17 +1,15 @@
-import { Metadata, status, StatusObject } from '@grpc/grpc-js';
-import { grpc } from '@ridedott/run';
+import { Metadata, ServiceError, status, StatusObject } from '@grpc/grpc-js';
 import * as serializer from 'proto3-json-serializer';
 import { default as protobuf, INamespace } from 'protobufjs';
 
+import { assertNever } from './assertions';
+import jsonDescriptor from './protos/bundle.js';
 import type { BadRequest__Output } from './protos/google/rpc/BadRequest';
 import type { DebugInfo__Output } from './protos/google/rpc/DebugInfo';
 import type { ErrorInfo__Output } from './protos/google/rpc/ErrorInfo';
 import type { PreconditionFailure__Output } from './protos/google/rpc/PreconditionFailure';
 import type { QuotaFailure__Output } from './protos/google/rpc/QuotaFailure';
 import type { ResourceInfo__Output } from './protos/google/rpc/ResourceInfo';
-import { assertNever } from './assertions';
-
-import jsonDescriptor from './protos/bundle.js';
 
 // Seems there is an error with the types but it works when casted.
 const root = protobuf.Root.fromJSON(jsonDescriptor as INamespace);
@@ -160,23 +158,27 @@ const getErrorMetadataForCode = <Status extends status>(
   }
 };
 
-export class GrpcError<Status extends StatusObject['code']> extends grpc.grpcJs
-  .Error {
-  public override readonly code: StatusObject['code'];
-
-  public override readonly details: string;
-
-  public override readonly metadata: Metadata;
+export class GrpcError extends Error implements ServiceError {
+  public readonly code: StatusObject['code'];
+  public readonly details: string;
+  public readonly metadata: Metadata;
 
   public constructor(
-    code: Status,
+    code: StatusObject['code'],
     message: string,
-    errorDetails: ErrorDetailsForStatus<Status>,
+    errorDetails: ErrorDetailsForStatus<StatusObject['code']>,
   ) {
     const metadata = getErrorMetadataForCode(code, message, errorDetails);
-    super(code, message, { metadata });
+    super(message);
 
     this.code = code;
+    /**
+     * In order to keep backwards compatibility, if details is not present it
+     * defaults to the value passed in the message argument of the constructor.
+     *
+     * This should be re-evaluated as adoption for Rich Error model for gRPC
+     * grows.
+     */
     this.details = message;
     this.metadata = metadata;
     this.name = 'GrpcError';

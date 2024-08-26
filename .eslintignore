@@ -1,0 +1,6 @@
+*.cjs
+*.mjs
+*.pb
+docs/*
+lib/*
+src/protos/*

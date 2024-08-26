@@ -12,6 +12,8 @@ overrides:
       '@typescript-eslint/no-magic-numbers': 'off'
       'max-lines-per-function': 'off'
       'spaced-comment': 'off'
+      'import/no-extraneous-dependencies': 'off'
+      'jest/prefer-to-be': 'off'
   - files:
       - ./__mocks__/**/*.ts
     rules:
@@ -22,3 +24,4 @@ parserOptions:
   sourceType: module
 rules:
   'no-console': 'off'
+  'functional/no-this-expressions': 'off'
