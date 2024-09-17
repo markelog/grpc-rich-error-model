@@ -4,13 +4,15 @@
 
 set -e
 
-rm -fr ./src/protos
-mkdir -p ./src/protos
-include=./node_modules/google-proto-files
+PROTOS_OUT_DIRECTORY="./src/protos"
+
+rm -fr $PROTOS_OUT_DIRECTORY
+mkdir -p $PROTOS_OUT_DIRECTORY
+INCLUDE=./node_modules/google-proto-files
 
 npx --no-install pbjs \
-  --out ./src/protos/bundle.json \
-  --path $include \
+  --out $PROTOS_OUT_DIRECTORY/bundle.json \
+  --path $INCLUDE \
   --target json \
   ./protos/root.proto
 
@@ -19,7 +21,7 @@ npx --no-install pbjs \
 npx --no-install proto-loader-gen-types \
   --grpcLib @grpc/grpc-js \
   --includeComments \
-  --includeDirs $include \
+  --includeDirs $INCLUDE \
   --longs Number \
-  --outDir ./src/protos \
+  --outDir $PROTOS_OUT_DIRECTORY \
   $(find ./protos -type f -print -regex ".*\.protos")

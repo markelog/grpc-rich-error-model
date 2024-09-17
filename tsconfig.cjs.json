@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "ESNext",
     "moduleResolution": "node",
     "noEmitHelpers": false,
     "outDir": "./lib/cjs",
@@ -9,5 +9,5 @@
     "esModuleInterop": true
   },
   "extends": "./tsconfig.esm.json",
-  "include": ["./src/index.ts"]
+  "include": ["./src/**/*.ts"]
 }

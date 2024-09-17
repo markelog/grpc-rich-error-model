@@ -7,7 +7,7 @@
     "resolveJsonModule": true,
     "tsBuildInfoFile": "./.cache/typescript"
   },
-  "extends": "./tsconfig.esm.json",
+  "extends": "./tsconfig.cjs.json",
   "include": [
     "./__mocks__/**/*.ts",
     "./jest.config.ts",

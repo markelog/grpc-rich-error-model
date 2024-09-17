@@ -80,7 +80,7 @@ describe('GrpcError', (): void => {
 
       /* eslint-disable @typescript-eslint/no-explicit-any */
       /* eslint-disable @typescript-eslint/no-unsafe-argument */
-      const grpcError = new GrpcError(code, 'message', {
+      const grpcError = new GrpcError<status>(code, 'message', {
         '@type': errorDetailType,
       } as any);
       /* eslint-enable @typescript-eslint/no-explicit-any */
@@ -114,7 +114,7 @@ describe('GrpcError', (): void => {
 
       /* eslint-disable @typescript-eslint/no-explicit-any */
       /* eslint-disable @typescript-eslint/no-unsafe-argument */
-      const grpcError = new GrpcError(code, 'message', {
+      const grpcError = new GrpcError<status>(code, 'message', {
         '@type': errorDetailType,
       } as any);
       /* eslint-enable @typescript-eslint/no-explicit-any */
