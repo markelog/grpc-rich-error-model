@@ -158,15 +158,18 @@ const getErrorMetadataForCode = <Status extends status>(
   }
 };
 
-export class GrpcError extends Error implements ServiceError {
+export class GrpcError<Status extends StatusObject['code']>
+  extends Error
+  implements ServiceError
+{
   public readonly code: StatusObject['code'];
   public readonly details: string;
   public readonly metadata: Metadata;
 
   public constructor(
-    code: StatusObject['code'],
+    code: Status,
     message: string,
-    errorDetails: ErrorDetailsForStatus<StatusObject['code']>,
+    errorDetails: ErrorDetailsForStatus<Status>,
   ) {
     const metadata = getErrorMetadataForCode(code, message, errorDetails);
     super(message);

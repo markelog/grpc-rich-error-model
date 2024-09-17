@@ -7,13 +7,14 @@
     "declaration": true,
     "declarationMap": true,
     "downlevelIteration": false,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": false,
     "incremental": false,
     "inlineSourceMap": false,
     "inlineSources": false,
     "isolatedModules": true,
-    "module": "Node16",
+    "module": "ESNext",
     "moduleResolution": "node",
     "newLine": "lf",
     "allowJs": true,
@@ -40,5 +41,6 @@
     "target": "ES2022",
     "useDefineForClassFields": true
   },
-  "include": ["./src/index.ts"]
+  "include": ["./src/index.ts"],
+  "exclude": ["./src/protos/**/*"]
 }
